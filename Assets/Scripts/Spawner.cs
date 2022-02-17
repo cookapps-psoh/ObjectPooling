@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     public int CountAll => _pool.CountAll;
     public int CountActive => _pool.CountActive;
     public int CountInactive => _pool.CountInactive;
+    public int MaxPoolSize => maxPoolSize;
     
     void Start()
     {
@@ -48,6 +49,7 @@ public class Spawner : MonoBehaviour
 
     public GameObject Spawn()
     {
+        Debug.Log(_pool);
         if (_pool.CountActive == maxPoolSize)
         {
             Debug.LogWarning("Max pool size reached! spawn() will be ignored.");
