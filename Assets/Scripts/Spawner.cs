@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -27,22 +25,22 @@ public class Spawner : MonoBehaviour
 
     GameObject OnCreatePoolObject()
     {
-        GameObject obj = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+        var obj = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity) as GameObject;
         obj.transform.SetParent(this.transform);
         return obj;
     }
-    
-    void OnGetPoolObject(GameObject obj)
+
+    private void OnGetPoolObject(GameObject obj)
     {
         obj.SetActive(true);
     }
 
-    void OnReleasePoolObject(GameObject obj)
+    private void OnReleasePoolObject(GameObject obj)
     {
         obj.SetActive(false);
     }
 
-    void OnDestroyPoolObject(GameObject obj)
+    private void OnDestroyPoolObject(GameObject obj)
     {
         Destroy(obj);
     }

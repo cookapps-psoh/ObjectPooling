@@ -1,11 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Mono.Cecil.Cil;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Pool;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,20 +17,20 @@ public class GameManager : MonoBehaviour
  
     private List<GameObject> _spawnedGameObjects;
 
-    void Start()
+    private void Start()
     {
         _spawnedGameObjects = new List<GameObject>();
     }
 
-    void UpdateStatus()
+    private void UpdateStatus()
     {
-        string status = $"Active = {spawner.CountActive}, Inactive = {spawner.CountInactive}, All = {spawner.CountAll}";
+        var status = $"Active = {spawner.CountActive}, Inactive = {spawner.CountInactive}, All = {spawner.CountAll}";
         logText.text = status;
     }
     
     public void OnClickSpawnButton()
     {
-        GameObject obj = spawner.Spawn();
+        var obj = spawner.Spawn();
         if (!obj)
         {
             Debug.LogWarning("No gameobject returned from pool");
@@ -43,15 +39,14 @@ public class GameManager : MonoBehaviour
         
         _spawnedGameObjects.Add(obj);
 
-        float x = Random.Range(xMin, xMax);
-        float y = Random.Range(yMin, yMax);
-        float z = 0;
+        var x = Random.Range(xMin, xMax);
+        var y = Random.Range(yMin, yMax);
 
-        obj.transform.position = new Vector3(x, y, z);
+        obj.transform.position = new Vector3(x, y);
         UpdateStatus();
     }
 
-    public void OnClickDespwanButton()
+    public void OnClickDespawnButton()
     {
         if (_spawnedGameObjects.Count == 0)
         {

@@ -87,7 +87,7 @@ public class TestSpawner
 
         for (var i = 0; i < maxPoolSize; ++i)
         {
-            gameManager.OnClickDespwanButton();
+            gameManager.OnClickDespawnButton();
             --objectCount;
 
             yield return null;
@@ -112,7 +112,7 @@ public class TestSpawner
         
         for (var i = 0; i < maxPoolSize; ++i)
         {
-            gameManager.OnClickDespwanButton();
+            gameManager.OnClickDespawnButton();
 
             yield return null;
             
